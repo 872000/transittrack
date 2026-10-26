@@ -16,7 +16,7 @@ Real-time transit apps need a data feed, an API key, and a connection. TransitTr
 ## Features
 
 - **Saved stops** — add stops from the bundled demo network, remove them, and reorder by drag to match your commute.
-- **Upcoming arrivals** — next departures per stop computed from offline headway schedules, sorted and merged across routes, refreshing every 30 seconds.
+- **Upcoming arrivals** — next departures per stop computed from offline headway schedules, sorted and merged across routes, refreshing every 30 seconds. Departures more than a minute old are dropped, a departure happening right now shows as "Due", and overlapping headway windows are de-duplicated so the same departure never appears twice.
 - **"Leave now" reminders** — configurable lead time (5–30 min, settings dialog); the app nudges you when a departure enters the window. Each reminder fires once per departure.
 - **Service-status notices** — bundled advisories (delays, planned work) surfaced as a banner on the home screen.
 - **Local persistence** — saved stops and your lead-time preference live in a small JSON file on-device; nothing leaves the phone.
