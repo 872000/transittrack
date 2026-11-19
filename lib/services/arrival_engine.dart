@@ -8,8 +8,13 @@ class ArrivalEngine {
   const ArrivalEngine();
 
   /// Returns up to [limit] arrivals at [stop], sorted by departure time.
-  /// Departures that left more than a minute ago are excluded; a departure
-  /// happening right now is kept so the UI can show "Due".
+  ///
+  /// Boundary rules: a departure is dropped once it is a minute old or
+  /// older; a departure happening right now is kept so the UI can show
+  /// "Due". Departures produced by overlapping headway windows are
+  /// de-duplicated by their stable id, and [limit] is applied after
+  /// sorting and de-duplication, so the list always holds the soonest
+  /// distinct departures.
   List<Arrival> upcoming({
     required Stop stop,
     required Map<String, TransitRoute> routesById,
